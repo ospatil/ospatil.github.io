@@ -1,0 +1,15 @@
+---
+layout: post
+title: Addon functionality for built-in directives in Angular
+date: '2013-01-01T23:48:00.000+05:30'
+author: Omkar Patil
+tags:
+- js
+- javascript
+- angularjs
+modified_time: '2013-01-01T23:48:19.354+05:30'
+blogger_id: tag:blogger.com,1999:blog-3599227544422363853.post-960969027330876730
+blogger_orig_url: http://blog.omkarpatil.com/2013/01/addon-functionality-for-builtin-directives-angular.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on"><p>In Angular, not only you can create your own directives but also redefine built-in directives to add additional functionality to them. This technique can come in handy in many situations.</p><p>Let's see this in action with the built-in <i>form</i> directive. We would like our form, in addition to the standard Angular form directive functionality, to notify its ancestors when it becomes dirty and make itself pristine again when ancestor notifies it to do so. </p><p>Here is the fiddle for it.</p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/ospatil/25Rcf/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br /><p>The markup is usual. There is a div with controller <i>"controller"</i> attached to it and it wraps the form <i>'myForm'</i> thus becoming ancestor of it. The interesting part is re-declaration of form directive.</p><pre>myApp.directive('form', [function () {<br />    return {<br />        restrict: 'E',<br />        require: 'form',<br />        link: function (scope, element, attrs, ctrl) {<br />            scope.$watch(attrs.name + '.$dirty', <br />                function (newValue, oldValue) {<br />                    if (newValue != oldValue && newValue === true) {<br />                        scope.$emit('formDirty', attrs.name);<br />                    } <br />                });<br />            scope.$on('formClean', function () {<br />                ctrl.$setPristine();             <br />            });<br />        }<br />    };<br />}]);<br /></pre><p>Note that we mention 'form' as require value so that Angular <i>FormController</i> associated with the form <i>'myForm'</i> is made available to our directive. In the <i>link</i> function, a watch is put on form <i>$dirty</i> and an event <i>'formDirty'</i> is emitted in such case. Also, a listener is added for <i>'formClean'</i> event that sets the form back to pristine state using <i>FormController</i>.</p><p>The controller associated with the wrapper div listens to <i>'formDirty'</i> event and shows a message on the page when it receives one and it broadcasts <i>'formClean'</i> event to its descendants when user resets the form using reset button.</p><p>Note the <i>ng-disabled</i> attribute has been added to reset button just to show that the all the built-in form directive functionality is available for use.</p><p><b>Note: </b>The <i>$setPristine()</i> API is available only from Angular 1.1.x release.</p></div>

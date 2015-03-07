@@ -1,0 +1,15 @@
+---
+layout: post
+title: AngularJS bits - Modular Controllers
+date: '2012-12-04T12:46:00.000+05:30'
+author: Omkar Patil
+tags:
+- js
+- javascript
+- angularjs
+modified_time: '2012-12-04T12:46:45.813+05:30'
+blogger_id: tag:blogger.com,1999:blog-3599227544422363853.post-1826554802488322183
+blogger_orig_url: http://blog.omkarpatil.com/2012/12/angularjs-modular-controllers.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on"><p>Controllers are basic building blocks of an AngularJS application and you can't get by without writing a few. These are pure JS functions and you can create them as global functions as shown in most of the tutorials.</p><p>But, and that's a very big <span style="font-size:200%;"><b>but</b></span>, polluting global namespace like this is never a good idea in a JS app. AngularJS, being as good as it is, provides an excellent way to create controllers in a modular way using API that is similar to the one we use to create directives, services and filters.</p><p>Please take a look at the fiddle below. The idea is using <b>module.controller</b> to define a controller and using the controller "name" string expression everywhere as shown in the fiddle. And that's it. As simple as that :).</p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/ospatil/d8aLp/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><br /></div>
