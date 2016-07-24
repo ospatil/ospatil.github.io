@@ -1,5 +1,5 @@
 ---
-title: Intuition into recursion in FP
+title: Initial steps towards intuition into recursion in FP
 layout: post
 ---
 I'm learning functional programming paradigm in general and Elixir in particular. It's quite a different way of doing things with pure functions, recursion, immutable data structures and absence of the usual constructs such as loops one is so used to. I have been reading quite a bit and practising small exercises with recently started activity of solving the [99 problems](https://ocaml.org/learn/tutorials/99problems.html). But so far, the intuition into using recursion instead of loops to work with lists seemed to elude me. All these references to breaking down a problem into smaller ones that repeat and converge towards _base case_ seemed easier said than done. With all that at the back of mind, I went to sleep day before yesterday thinking about _problem 7 - Flatten a nested list structure_ and woke up with a light-bulb moment :smiley:. While it might be a trivial problem for pundits, I am summing it all up here step by step in a hope that complete noobs like myself may pick up a thing or two from it.
