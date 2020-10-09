@@ -3,8 +3,8 @@ title: In the trenches
 email: ospatil@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     My random ramblings on technology.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://ospatil.github.io/old-blog" # the base hostname & protocol for your site
+baseurl: "/old-blog/" # the subpath of your site, e.g. /blog/
+url: "https://ospatil.github.io" # the base hostname & protocol for your site
 twitter_username: omkar_p
 github_username: ospatil
 
