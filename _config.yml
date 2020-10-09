@@ -12,3 +12,5 @@ github_username: ospatil
 markdown: kramdown
 
 gems: ["jemoji"]
+
+theme: jekyll-theme-minimal
